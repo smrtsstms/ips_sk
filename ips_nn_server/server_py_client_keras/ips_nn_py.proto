@@ -1,0 +1,54 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.ipsnn.ips_data_exchange"; //io.grpc.examples.helloworld
+option java_outer_classname = "ips_data_exchange";
+option objc_class_prefix = "IPSNN";
+
+package ips_data_exchange;
+
+service Exchanger {
+  rpc putData2nn (data2nn) returns (response2client) {}
+}
+
+service Putter {
+  // Sends data to DB
+  rpc putData2DB (nn2db) returns (response2client) {}
+}
+
+// The request message containing the user's name.
+message data2nn {
+  string devserial = 1;
+  repeated string addr = 2;
+  repeated int32 rssi = 3;
+}
+
+message nn2db {
+  string p_frst_x = 1;
+  string p_frst_y = 2;
+  string p_scnd_x = 3;
+  string p_scnd_y = 4;
+  string devserial = 5;
+  repeated string addr = 6;
+  repeated int32 rssi = 7;
+}
+
+message response2client {
+  string message = 1;
+}
+
+message Empty {}

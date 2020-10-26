@@ -1,0 +1,20 @@
+syntax = "proto3";
+package ips_put_data2db;
+service Putter {
+  rpc putData2DB (data2db) returns (response2client) {}
+}
+message data2db {
+  enum Devices {
+  	SMARTPHONE = 0;
+  	OTHER_DEVICE = 1;
+  };
+  Devices dev = 1;
+  required string x = 2;
+  required string y = 3;
+  required string devserial = 4;
+  repeated string addr = 5;
+  repeated int32 rssi = 6;
+}
+message response2client {
+  required string message = 1;
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+package ips_data_exchange;
+
+service Exchanger {
+  rpc putData2nn (data2nn) returns (response2client) {}
+}
+
+service Putter {
+  // Sends data to DB
+  rpc putData2DB (nn2db) returns (response2client) {}
+}
+
+message data2nn {
+  required string devserial = 1;
+  repeated string addr = 2;
+  repeated int32 rssi = 3;
+}
+
+message nn2db {
+  required string p_frst_x = 1;
+  required string p_frst_y = 2;
+  required string p_scnd_x = 3;
+  required string p_scnd_y = 4;
+  required string devserial = 7;
+  repeated string addr = 8;
+  repeated int32 rssi = 9;
+}
+
+message response2client {
+  required string message = 1;
+}
+
+message Empty {}

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  server_nn2db:
+    container_name: server_nn2db
+    build:
+      context: ./server_nn2db
+      dockerfile: Dockerfile
+
+  node_express_client:
+    container_name: node_express_client
+    build:
+      context: ./node_express_client
+      dockerfile: Dockerfile
+    ports:
+      - "3078:3078"
+
+  server_py_client:
+    container_name: server_py_client
+    build:
+      context: ./server_py_client
+      dockerfile: Dockerfile

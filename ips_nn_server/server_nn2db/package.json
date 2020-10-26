@@ -1,0 +1,9 @@
+{
+  "name": "node_grpc_putData2DB_server",
+  "version": "1.0.0",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.4",
+    "grpc": "^1.24.2",
+    "pg": "^8.1.0"
+  }
+}
